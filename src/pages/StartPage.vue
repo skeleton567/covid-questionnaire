@@ -9,7 +9,7 @@
         v-if="imageSet"
         class="font-bold text-3xl w-24 flex justify-center z-0"
       >
-        <router-link to="/" class="text-center h"
+        <router-link to="/" class="text-center link"
           >კითხვარის დაწყება</router-link
         >
       </div>
@@ -56,7 +56,7 @@ export default {
   opacity: 1;
 }
 
-.h:hover {
+.link:hover {
   text-shadow: 2px 0px 0 #b5c0c7, 3px 0px 0 black;
 }
 </style>
