@@ -25,7 +25,7 @@
             </div>
            
         </section>
-        <img class="h-[600px]" src="@/assets/images/BoyGirl.png" alt=""/>
+        <img class="h-[600px]" src="@/assets/images/BoyGirl.png" alt="Boy and the girl with stars in eyes"/>
     </div>
     <footer class="mt-20">
         <the-footer :isActive="buttoniSDisabled" pageNum="1" :nextPage="{name: 'covidSituation'}"></the-footer>

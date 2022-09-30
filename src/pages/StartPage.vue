@@ -1,7 +1,7 @@
 <template>
   <div class="h-full w-full flex flex-col justify-center items-center">
     <transition name="bird" @after-enter="afterImgEnter" appear>
-      <img class="w-24 h-24" src="@/assets/images/StartBird.png" alt="" />
+      <img class="w-24 h-24" src="@/assets/images/StartBird.png" alt="rocket bird logo" />
     </transition>
     <div v-if="imageSet" class="w-96 h-24 bg-[#B5C0C7] z-50"></div>
     <transition name="link" appear>

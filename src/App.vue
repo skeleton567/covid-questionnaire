@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import "./assets/tailwind.css";
-import BaseWrap from "./components/BaseWrap.vue";
+import "@/assets/tailwind.css";
+import BaseWrap from "@/components/BaseWrap.vue";
 
 export default {
   components: { BaseWrap },
@@ -17,6 +17,6 @@ export default {
 @font-face {
   font-family: "BPGArial";
   src: local("BPGArial"),
-    url(.assets/fonts/bpg_arial_2009.ttf) format("truetype");
+    url(@/assets/fonts/bpg_arial_2009.ttf) format("truetype");
 }
 </style>

@@ -40,7 +40,7 @@
             <input class="outline-none ml-5 w-full px-5 py-2 bg-inherit border border-gray-600 mt-3 placeholder-gray-500"  type="number"  placeholder="დდ/თთ/წწ"/>
            </div>
         </section>
-        <img class="h-[600px]" src="@/assets/images/temperature.png" alt=""/>
+        <img class="h-[600px]" src="@/assets/images/temperature.png" alt="Boy with temperature"/>
     </div>
 
     </the-header>
