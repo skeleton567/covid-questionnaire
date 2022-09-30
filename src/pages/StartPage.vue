@@ -1,7 +1,7 @@
 <template>
   <div class="h-full w-full flex flex-col justify-center items-center">
     <transition name="bird" @after-enter="afterImgEnter" appear>
-      <img class="w-24 h-24" src="../assets/images/StartBird.png" alt="" />
+      <img class="w-24 h-24" src="@/assets/images/StartBird.png" alt="" />
     </transition>
     <div v-if="imageSet" class="w-96 h-24 bg-[#B5C0C7] z-50"></div>
     <transition name="link" appear>
@@ -9,7 +9,7 @@
         v-if="imageSet"
         class="font-bold text-3xl w-24 flex justify-center z-0"
       >
-        <router-link to="/" class="text-center link"
+        <router-link :to="{name: 'information'}" class="text-center link"
           >კითხვარის დაწყება</router-link
         >
       </div>
@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .bird-enter-from {
   scale: 25;
 }
