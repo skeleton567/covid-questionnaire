@@ -4,38 +4,13 @@
       <div class="flex justify-between">
         <section class="mt-10 w-[500px]">
           <div class="mb-5">
-            <label class="w-full font-bold text-xl" for="name">სახელი*</label>
-            <Field
-              class="outline-none w-full px-5 py-2 bg-inherit border border-gray-600 mt-3"
-              id="name"
-              name="name"
-              :rules="nameRules"
-            />
-            <ErrorMessage class="text-red-400 text-sm px-5" name="name" />
+            <text-input :componenetRule="nameRules" type="text" label="სახელი*" name="name"/>
           </div>
           <div class="mb-5">
-            <label class="w-full font-bold text-xl" for="lastname"
-              >გვარი*</label
-            >
-            <Field
-              class="outline-none w-full px-5 py-2 bg-inherit border border-gray-600 mt-3"
-              name="lastname"
-              id="lastname"
-              type="text"
-              :rules="lastNameRules"
-            />
-            <ErrorMessage class="text-red-400 text-sm px-5" name="lastname" />
+            <text-input :componenetRule="lastNameRules" type="text" label="გვარი*" name="lastname"/>
           </div>
           <div>
-            <label class="w-full font-bold text-xl" for="email">მეილი*</label>
-            <Field
-              class="outline-none w-full px-5 py-2 bg-inherit border border-gray-600 mt-3"
-              name="email"
-              id="email"
-              type="text"
-              :rules="emailRules"
-            />
-            <ErrorMessage class="text-red-400 text-sm px-5" name="email" />
+            <text-input :componenetRule="emailRules" type="email" label="მეილი*" name="email"/>
           </div>
 
           <div class="mt-28 w-64">
@@ -69,12 +44,12 @@
 </template>
 
 <script>
-import { Field, Form, ErrorMessage } from "vee-validate";
+import { Form } from "vee-validate";
+import TextInput from "@/components/TextInput.vue";
 export default {
   components: {
-    Field,
-    ErrorMessage,
     Form,
+    TextInput
   },
   methods: {
     nameRules(value) {

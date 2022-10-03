@@ -6,37 +6,13 @@
           <div>
             <h2 class="font-bold text-xl">გაქვს გადატანილი Covid-19?*</h2>
             <div class="mt-2 mb-5 ml-5">
-              <label class="text-lg ml-2">
-                <Field
-                  type="radio"
-                  class="appearance-none rounded-full bg-inherit box-shadow border-2 border-[#B5C0C7] p-1 checked:bg-neutral-900"
-                  name="covidStatus"
-                  :value="'yes'"
-                />
-                კი
-              </label>
+              <radio-input value="yes" label="კი" name="covidStatus"/>
             </div>
             <div class="ml-5 mb-5">
-              <label class="text-lg ml-2">
-                <Field
-                  type="radio"
-                  class="appearance-none rounded-full bg-inherit box-shadow border-2 border-[#B5C0C7] p-1 checked:bg-neutral-900"
-                  name="covidStatus"
-                  :value="'no'"
-                />
-                არა
-              </label>
+              <radio-input value="no" label="არა" name="covidStatus"/>
             </div>
             <div class="ml-5">
-              <label class="text-lg ml-2">
-                <Field
-                  type="radio"
-                  class="appearance-none rounded-full bg-inherit box-shadow border-2 border-[#B5C0C7] p-1 checked:bg-neutral-900"
-                  name="covidStatus"
-                  :value="'now'"
-                />
-                ახლა მაქვს
-              </label>
+              <radio-input value="now" label="ახლა მაქვს" name="covidStatus"/>
             </div>
           </div>
           <div v-if="values.covidStatus === 'yes'" class="mt-10">
@@ -44,26 +20,10 @@
               <h2 class="font-bold text-xl">
                 ანტისხეულების ტესტი გაქვს გაკეთებული?*
               </h2>
-              <label class="text-lg ml-2">
-                <Field
-                  type="radio"
-                  class="appearance-none rounded-full bg-inherit box-shadow border-2 border-[#B5C0C7] p-1 checked:bg-neutral-900"
-                  name="covidTest"
-                  :value="'testYes'"
-                />
-                კი
-              </label>
+              <radio-input value="testYes" label="კი" name="covidTest"/>
             </div>
             <div class="mt-2 mb-5 ml-5">
-              <label class="text-lg ml-2">
-                <Field
-                  type="radio"
-                  class="appearance-none rounded-full bg-inherit box-shadow border-2 border-[#B5C0C7] p-1 checked:bg-neutral-900"
-                  name="covidTest"
-                  :value="'testNo'"
-                />
-                არა
-              </label>
+              <radio-input value="testNo" label="არა" name="covidTest"/>
             </div>
           </div>
 
@@ -133,28 +93,30 @@
 
 <script>
 import { Field, Form, ErrorMessage } from "vee-validate";
+import RadioInput from "@/components/RadioInput.vue";
 export default {
   components: {
     Field,
     ErrorMessage,
     Form,
+    RadioInput
   },
   data() {
     return {
       schema: {
-        covidStatus: (value) => {
+        covidStatus(value) {
           if (value) {
             return true;
           }
           return false;
         },
-        covidTest: (value) => {
+        covidTest(value) {
           if (value) {
             return true;
           }
           return false;
         },
-        period: (value) => {
+        period(value) {
           const dateRegex =
             /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
           if (dateRegex.test(value)) {

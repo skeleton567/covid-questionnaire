@@ -8,6 +8,8 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
+    "@vee-validate/i18n": "^4.5.11",
+    "@vee-validate/rules": "^4.6.10",
     "autoprefixer": "^10",
     "postcss": "^8",
     "tailwindcss": "^3",
