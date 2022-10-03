@@ -3,14 +3,13 @@ import App from "@/App.vue";
 import router from "@/router";
 import TheHeader from '@/components/TheHeader.vue'
 import TheFooter from '@/components/TheFooter.vue'
-import TextInput from "@/components/TextInput.vue";
 
 import "@/assets/tailwind.css";
+import "@/config/vee-validate/rules";
 
 const app = createApp(App);
 app.component('the-header',TheHeader);
 app.component('the-footer', TheFooter);
-app.component('text-input', TextInput);
 app.use(router);
 
 app.mount("#app");

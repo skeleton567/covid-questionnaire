@@ -4,13 +4,13 @@
       <div class="flex justify-between">
         <section class="mt-10 w-[500px]">
           <div class="mb-5">
-            <text-input :componenetRule="nameRules" type="text" label="სახელი*" name="name"/>
+            <text-input componenetRule="required|min_length:2" type="text" label="სახელი*" name="name"/>
           </div>
           <div class="mb-5">
-            <text-input :componenetRule="lastNameRules" type="text" label="გვარი*" name="lastname"/>
+            <text-input componenetRule="required|min_length:2" type="text" label="გვარი*" name="lastname"/>
           </div>
           <div>
-            <text-input :componenetRule="emailRules" type="email" label="მეილი*" name="email"/>
+            <text-input componenetRule="email" type="email" label="მეილი*" name="email"/>
           </div>
 
           <div class="mt-28 w-64">

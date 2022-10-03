@@ -104,28 +104,9 @@ export default {
   data() {
     return {
       schema: {
-        covidStatus(value) {
-          if (value) {
-            return true;
-          }
-          return false;
-        },
-        covidTest(value) {
-          if (value) {
-            return true;
-          }
-          return false;
-        },
-        period(value) {
-          const dateRegex =
-            /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
-          if (dateRegex.test(value)) {
-            return true;
-          } else if (!value) {
-            return "";
-          }
-          return "რიცხი უნდა ჩაიწეროს დღე/თვე/წელი ფორმატით";
-        },
+        covidStatus: 'required',
+        covidTest: 'required',
+        period: 'date'
       },
     };
   },
