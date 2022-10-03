@@ -5,6 +5,7 @@ import TheHeader from '@/components/TheHeader.vue'
 import TheFooter from '@/components/TheFooter.vue'
 
 import "@/assets/tailwind.css";
+import "@/config/vee-validate/rules";
 
 const app = createApp(App);
 app.component('the-header',TheHeader);
