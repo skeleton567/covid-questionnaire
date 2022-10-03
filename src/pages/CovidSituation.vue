@@ -85,7 +85,7 @@
             values.covidTest === 'testYes'
           "
           :previousPage="{ name: 'information' }"
-          :nextPage="{ name: 'covidSituation' }"
+          :nextPage="{ name: 'vaccinated' }"
         ></the-footer>
       </footer>
       <transition name="ball" appear>
@@ -94,7 +94,6 @@
           src="@/assets/images/redball.png"
           alt="Red ball"
         />
-       
       </transition>
     </the-header>
   </Form>
@@ -132,6 +131,5 @@ export default {
 }
 .ball-enter-to {
   width: 200px;
-
 }
 </style>
