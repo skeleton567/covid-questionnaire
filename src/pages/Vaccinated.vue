@@ -133,7 +133,7 @@
           </div>
         </section>
         <img
-          class="h-[600px] mt-10"
+          class="h-[600px] mt-10 z-10"
           src="@/assets/images/doctor.png"
           alt="Doctor with syringe"
         />
@@ -154,7 +154,7 @@
 
       <transition name="star" appear>
         <img
-          class="h-[250px] mt-10 absolute top-36 right-[570px] opacity-70"
+          class="h-[250px] mt-10 absolute top-36 right-[570px]"
           src="@/assets/images/star.png"
           alt="Doctor with syringe"
         />
@@ -205,7 +205,7 @@ export default {
 
 <style scoped>
 .star-enter-from {
-  translate: -100px +100px;
+  translate: -200px +200px;
 }
 .star-enter-active {
   transition: all 0.2s ease-out;
