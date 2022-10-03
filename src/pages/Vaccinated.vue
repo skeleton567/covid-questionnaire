@@ -67,7 +67,11 @@
             <div v-if="values.stage === 'FirstDoseAndNoReg'" class="w-80 mt-10">
               <h2 class="ml-12">
                 რომ არ გადადო, ბარემ ახლავე დარეგისტრირდი
-                <a class="text-[#1289AE]" target="_blank" href=" https://booking.moh.gov.ge/">
+                <a
+                  class="text-[#1289AE]"
+                  target="_blank"
+                  href=" https://booking.moh.gov.ge/"
+                >
                   https://booking.moh.gov.ge/
                 </a>
               </h2>
@@ -115,36 +119,47 @@
             >
               <h2 class="ml-12 w-96">
                 ახალი პროტოკოლით კოვიდის გადატანიდან 1 თვის შემდეგ შეგიძლიათ
-                ვაქცინის გაკეთება. </h2>
-                <p class="ml-12 mt-5">👉 რეგისტრაციის ბმული</p>
-                <a class="text-[#1289AE] ml-12" target="_blank" href=" https://booking.moh.gov.ge/">
-                  https://booking.moh.gov.ge/
-                </a>
-              
+                ვაქცინის გაკეთება.
+              </h2>
+              <p class="ml-12 mt-5">👉 რეგისტრაციის ბმული</p>
+              <a
+                class="text-[#1289AE] ml-12"
+                target="_blank"
+                href=" https://booking.moh.gov.ge/"
+              >
+                https://booking.moh.gov.ge/
+              </a>
             </div>
           </div>
         </section>
         <img
-          class="h-[600px]"
+          class="h-[600px] mt-10"
           src="@/assets/images/doctor.png"
           alt="Doctor with syringe"
         />
       </div>
-      <button @click="log">dsf</button>
+      <footer class="mt-20">
+        <the-footer
+          pageNum="3"
+          :isActive="
+            meta.valid ||
+            values.covidStatus === 'no' ||
+            values.covidStatus === 'now' ||
+            values.covidTest === 'testYes'
+          "
+          :previousPage="{ name: 'information' }"
+          :nextPage="{ name: 'covidSituation' }"
+        ></the-footer>
+      </footer>
+
+      <transition name="star" appear>
+        <img
+          class="h-[250px] mt-10 absolute top-36 right-[570px] opacity-70"
+          src="@/assets/images/star.png"
+          alt="Doctor with syringe"
+        />
+      </transition>
     </the-header>
-    <footer class="mt-20">
-      <the-footer
-        pageNum="3"
-        :isActive="
-          meta.valid ||
-          values.covidStatus === 'no' ||
-          values.covidStatus === 'now' ||
-          values.covidTest === 'testYes'
-        "
-        :previousPage="{ name: 'information' }"
-        :nextPage="{ name: 'covidSituation' }"
-      ></the-footer>
-    </footer>
   </Form>
 </template>
 
@@ -179,16 +194,26 @@ export default {
         },
       },
     };
+  },
+  methods: {
+    log() {
+      console.log(this.Form);
     },
-    methods: {
-        log() {
-            console.log(this.Form);
-    }
-  }
+  },
 };
 </script>
 
 <style scoped>
+.star-enter-from {
+  translate: -100px +100px;
+}
+.star-enter-active {
+  transition: all 0.2s ease-out;
+}
+.star-enter-to {
+  translate: 0px 0px;
+}
+
 .box-shadow {
   box-shadow: 0 0 0 1px black;
 }
