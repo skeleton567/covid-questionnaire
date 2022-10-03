@@ -6,13 +6,13 @@
           <div>
             <h2 class="font-bold text-xl">გაქვს გადატანილი Covid-19?*</h2>
             <div class="mt-2 mb-5 ml-5">
-              <radio-input value="yes" label="კი" name="covidStatus"/>
+              <radio-input value="yes" label="კი" name="covidStatus" />
             </div>
             <div class="ml-5 mb-5">
-              <radio-input value="no" label="არა" name="covidStatus"/>
+              <radio-input value="no" label="არა" name="covidStatus" />
             </div>
             <div class="ml-5">
-              <radio-input value="now" label="ახლა მაქვს" name="covidStatus"/>
+              <radio-input value="now" label="ახლა მაქვს" name="covidStatus" />
             </div>
           </div>
           <div v-if="values.covidStatus === 'yes'" class="mt-10">
@@ -20,10 +20,10 @@
               <h2 class="font-bold text-xl">
                 ანტისხეულების ტესტი გაქვს გაკეთებული?*
               </h2>
-              <radio-input value="testYes" label="კი" name="covidTest"/>
+              <radio-input value="testYes" label="კი" name="covidTest" />
             </div>
             <div class="mt-2 mb-5 ml-5">
-              <radio-input value="testNo" label="არა" name="covidTest"/>
+              <radio-input value="testNo" label="არა" name="covidTest" />
             </div>
           </div>
 
@@ -69,25 +69,34 @@
           </div>
         </section>
         <img
-          class="h-[600px]"
+          class="h-[650px] w-[850px] z-10"
           src="@/assets/images/temperature.png"
           alt="Boy with temperature"
         />
       </div>
+
+      <footer class="mt-20">
+        <the-footer
+          pageNum="2"
+          :isActive="
+            meta.valid ||
+            values.covidStatus === 'no' ||
+            values.covidStatus === 'now' ||
+            values.covidTest === 'testYes'
+          "
+          :previousPage="{ name: 'information' }"
+          :nextPage="{ name: 'covidSituation' }"
+        ></the-footer>
+      </footer>
+      <transition name="ball" appear>
+        <img
+          class="h-[200px] absolute left-[940px] top-[340px]"
+          src="@/assets/images/redball.png"
+          alt="Red ball"
+        />
+       
+      </transition>
     </the-header>
-    <footer class="mt-20">
-      <the-footer
-        pageNum="2"
-        :isActive="
-          meta.valid ||
-          values.covidStatus === 'no' ||
-          values.covidStatus === 'now' ||
-          values.covidTest === 'testYes'
-        "
-        :previousPage="{ name: 'information' }"
-        :nextPage="{ name: 'covidSituation' }"
-      ></the-footer>
-    </footer>
   </Form>
 </template>
 
@@ -99,14 +108,14 @@ export default {
     Field,
     ErrorMessage,
     Form,
-    RadioInput
+    RadioInput,
   },
   data() {
     return {
       schema: {
-        covidStatus: 'required',
-        covidTest: 'required',
-        period: 'date'
+        covidStatus: "required",
+        covidTest: "required",
+        period: "date",
       },
     };
   },
@@ -114,7 +123,15 @@ export default {
 </script>
 
 <style scoped>
-.box-shadow {
-  box-shadow: 0 0 0 1px black;
+.ball-enter-from {
+  translate: 100px -100px;
+  width: 400px;
+}
+.ball-enter-active {
+  transition: all 0.3s ease-out;
+}
+.ball-enter-to {
+  width: 200px;
+
 }
 </style>
