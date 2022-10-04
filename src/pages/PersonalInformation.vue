@@ -1,6 +1,6 @@
 <template>
   <Form v-slot="{meta}">
-    <the-header pageNum="1">
+    <the-header :pageNum="1">
       <div class="flex justify-between">
         <section class="mt-10 w-[500px]">
           <div class="mb-5">
@@ -29,7 +29,7 @@
       <footer class="mt-20">
        <the-footer
           :isActive="meta.valid"
-          pageNum="1"
+          :pageNum="1"
           :nextPage="{ name: 'covidSituation' }"
           @storeData="submit"
         ></the-footer>

@@ -15,8 +15,13 @@
 <script>
 import { Field, Form, ErrorMessage } from "vee-validate";
 export default {
-  props: ["value", "label", "name", 'componentValue'],
-  emits: ['radio-value'],
+  props: {
+    componentValue: { type: String, required: false },
+    label: { type: String, required: true },
+    name: { type: String, required: true },
+    value: { type: String, required: true },
+  },
+  emits: ["radio-value"],
   components: {
     Field,
     ErrorMessage,
@@ -24,9 +29,9 @@ export default {
   },
   methods: {
     sendValue(value) {
-      this.$emit('radio-value', value);
-    }
-  }
+      this.$emit("radio-value", value);
+    },
+  },
 };
 </script>
 

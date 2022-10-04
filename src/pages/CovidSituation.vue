@@ -1,6 +1,6 @@
 <template>
   <Form v-slot="{ meta, values }" :validation-schema="schema">
-    <the-header pageNum="2">
+    <the-header :pageNum="2">
       <div class="flex justify-between">
         <section class="mt-10 w-[500px]">
           <div>
@@ -77,7 +77,6 @@
 
       <footer class="mt-10">
         <the-footer
-          pageNum="2"
           :isActive="
             meta.valid ||
             values.covidStatus === 'no' ||

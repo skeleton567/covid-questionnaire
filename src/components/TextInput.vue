@@ -15,8 +15,14 @@
 <script>
 import { Field, Form, ErrorMessage } from "vee-validate";
 export default {
-  props: ["componenetRule", "type", "label", "name", "value"],
-  emits: ['get-value'],
+  props: {
+    componenetRule: { type: String, required: true },
+    type: { type: String, required: true },
+    label: { type: String, required: true },
+    name: { type: String, required: true },
+    value: { type: String, required: false },
+  },
+  emits: ["get-value"],
   components: {
     Field,
     ErrorMessage,
@@ -24,8 +30,8 @@ export default {
   },
   methods: {
     sendValue(value) {
-      this.$emit('get-value', value);
-    }
-  }
+      this.$emit("get-value", value);
+    },
+  },
 };
 </script>
