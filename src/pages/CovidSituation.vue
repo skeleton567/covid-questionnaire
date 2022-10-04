@@ -1,8 +1,8 @@
 <template>
-  <Form v-slot="{ meta, values }" :validation-schema="schema">
+  <Form class="h-[100vh]" v-slot="{ meta, values }" :validation-schema="schema">
     <the-header pageNum="2">
       <div class="flex justify-between">
-        <section class="mt-10 w-[500px]">
+        <section class="mt-48 w-[500px]">
           <div>
             <h2 class="font-bold text-xl">გაქვს გადატანილი Covid-19?*</h2>
             <div class="mt-2 mb-5 ml-5">
@@ -69,7 +69,7 @@
           </div>
         </section>
         <img
-          class="h-[650px] w-[850px] z-10"
+          class="h-[650px] w-[850px] mt-40 z-10"
           src="@/assets/images/temperature.png"
           alt="Boy with temperature"
         />

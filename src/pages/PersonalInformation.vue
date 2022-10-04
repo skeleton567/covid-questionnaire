@@ -1,8 +1,8 @@
 <template>
-  <Form v-slot="{ meta }">
+  <Form class="h-[100vh]" v-slot="{ meta }">
     <the-header pageNum="1">
       <div class="flex justify-between">
-        <section class="mt-10 w-[500px]">
+        <section class="mt-48 w-[500px]">
           <div class="mb-5">
             <text-input componenetRule="required|min_length:2" type="text" label="სახელი*" name="name"/>
           </div>
@@ -21,7 +21,7 @@
           </div>
         </section>
         <img
-          class="h-[600px]"
+          class="h-[600px] mt-40"
           src="@/assets/images/BoyGirl.png"
           alt="Boy and the girl with stars in eyes"
         />

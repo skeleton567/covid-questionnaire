@@ -1,8 +1,8 @@
 <template>
-  <Form v-slot="{ values }" :validation-schema="schema">
+  <Form class="h-[100vh]" v-slot="{ values }" :validation-schema="schema">
     <the-header pageNum="3">
       <div class="flex justify-between">
-        <section class="mt-10 w-[700px]">
+        <section class="mt-48 w-[700px]">
           <h2 class="font-bold text-xl">უკვე აცრილი ხარ?*</h2>
           <div class="ml-5">
             <div class="mt-2 mb-5">
@@ -86,7 +86,7 @@
           </div>
         </section>
         <img
-          class="h-[600px] w-[800px] mt-10 z-10"
+          class="h-[600px] w-[800px] mt-48 z-10"
           src="@/assets/images/doctor.png"
           alt="Doctor with syringe"
         />
@@ -101,7 +101,7 @@
             values.wait
           "
           :previousPage="{ name: 'covidSituation' }"
-          :nextPage="{ name: 'covidSituation' }"
+          :nextPage="{ name: 'covidPolicy' }"
         ></the-footer>
       </footer>
 
@@ -147,7 +147,4 @@ export default {
   translate: 0px 0px;
 }
 
-.box-shadow {
-  box-shadow: 0 0 0 1px black;
-}
 </style>
