@@ -1,7 +1,7 @@
 <template>
     <div class="w-full flex justify-center space-x-28">
        <router-link v-if="pageNum != 1" :to="previousPage"><img src="@/assets/images/previous.png" alt=""></router-link>
-       <router-link :class="{ ['opacity-50']: !isActive, ['pointer-events-none']: !isActive }" :to="nextPage"> <img src="@/assets/images/next.png" alt=""></router-link>
+       <router-link k v-if="pageNum != 4" :class="{ ['opacity-50']: !isActive, ['pointer-events-none']: !isActive }" :to="nextPage"> <img src="@/assets/images/next.png" alt=""></router-link>
        
     </div>
 </template>
