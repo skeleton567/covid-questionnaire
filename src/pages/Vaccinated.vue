@@ -93,7 +93,6 @@
       </div>
       <footer class="mt-20">
         <the-footer
-          pageNum="3"
           :isActive="
             values.vaccinated === 'yes' &&
             values.stage ||

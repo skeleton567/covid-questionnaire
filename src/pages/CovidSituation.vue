@@ -6,20 +6,20 @@
           <div>
             <h2 class="font-bold text-xl">გაქვს გადატანილი Covid-19?*</h2>
             <div class="mt-2 mb-5 ml-5">
-              <radio-input value="yes" label="კი" name="covidStatus" />
-            </div>
+              <radio-input value="yes" label="კი" name="covidStatus" :componentValue="hadCovid"  @radioValue="setHadCovidValue"/>
+            </div> 
             <div class="ml-5 mb-5">
-              <radio-input value="no" label="არა" name="covidStatus" />
+              <radio-input value="no" label="არა" name="covidStatus" :componentValue="hadCovid" @radioValue="setHadCovidValue" />
             </div>
             <div class="ml-5">
-              <radio-input value="now" label="ახლა მაქვს" name="covidStatus" />
+              <radio-input value="now" label="ახლა მაქვს" name="covidStatus" :componentValue="hadCovid" @radioValue="setHadCovidValue"/>
             </div>
           </div>
           <div v-if="values.covidStatus === 'yes'" class="mt-10">
-            <div class="ml-5">
-              <h2 class="font-bold text-xl">
-                ანტისხეულების ტესტი გაქვს გაკეთებული?*
-              </h2>
+            <h2 class="font-bold text-xl">
+              ანტისხეულების ტესტი გაქვს გაკეთებული?*
+            </h2>
+            <div class="ml-5 mb-5 mt-2">
               <radio-input value="testYes" label="კი" name="covidTest" />
             </div>
             <div class="mt-2 mb-5 ml-5">
@@ -75,9 +75,8 @@
         />
       </div>
 
-      <footer class="mt-20">
+      <footer class="mt-10">
         <the-footer
-          pageNum="2"
           :isActive="
             meta.valid ||
             values.covidStatus === 'no' ||
@@ -111,6 +110,7 @@ export default {
   },
   data() {
     return {
+      hadCovid: 'no',
       schema: {
         covidStatus: "required",
         covidTest: "required",
@@ -118,6 +118,11 @@ export default {
       },
     };
   },
+  methods: {
+    setHadCovidValue(value) {
+      this.hadCovid = value;
+    }
+  }
 };
 </script>
 

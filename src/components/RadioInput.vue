@@ -5,6 +5,8 @@
       class="appearance-none rounded-full bg-inherit box-shadow border-2 border-[#B5C0C7] p-1 checked:bg-neutral-900"
       :name="name"
       :value="value"
+      @change="sendValue(value)"
+      v-model="componentValue"
     />
     {{ label }}
   </label>
@@ -13,11 +15,22 @@
 <script>
 import { Field, Form, ErrorMessage } from "vee-validate";
 export default {
-  props: ["value", "label", "name"],
+  props: {
+    componentValue: { type: String, required: false },
+    label: { type: String, required: true },
+    name: { type: String, required: true },
+    value: { type: String, required: true },
+  },
+  emits: ["radio-value"],
   components: {
     Field,
     ErrorMessage,
     Form,
+  },
+  methods: {
+    sendValue(value) {
+      this.$emit("radio-value", value);
+    },
   },
 };
 </script>

@@ -1,18 +1,19 @@
 <template>
+  <Form v-slot="{meta}">
   <Form class="h-[100vh]" v-slot="{ meta }">
     <the-header pageNum="1">
       <div class="flex justify-between">
         <section class="mt-48 w-[500px]">
           <div class="mb-5">
-            <text-input componenetRule="required|min_length:2" type="text" label="სახელი*" name="name"/>
+            <text-input componenetRule="required|min_length:2" type="text" label="სახელი*" name="name" @getValue="setNameValue" :value="nameValue"/>
           </div>
           <div class="mb-5">
-            <text-input componenetRule="required|min_length:2" type="text" label="გვარი*" name="lastname"/>
+            <text-input componenetRule="required|min_length:2" type="text" label="გვარი*" name="lastname" @getValue="setLastNameValue" :value="lastNameValue"/>
           </div>
           <div>
-            <text-input componenetRule="email" type="email" label="მეილი*" name="email"/>
+            <text-input componenetRule="email" type="email" label="მეილი*" name="email" @getValue="setEmailValue" :value="emailValue"/>
           </div>
-
+:
           <div class="mt-28 w-64">
             <div class="w-60 border-t-2 border-gray-500 mb-5"></div>
             <p class="text-gray-500">
@@ -27,10 +28,11 @@
         />
       </div>
       <footer class="mt-20">
-        <the-footer
+       <the-footer
           :isActive="meta.valid"
-          pageNum="1"
+          :pageNum="1"
           :nextPage="{ name: 'covidSituation' }"
+          @storeData="submit"
         ></the-footer>
       </footer>
 
@@ -51,30 +53,34 @@ export default {
     Form,
     TextInput
   },
-  methods: {
-    nameRules(value) {
-      if (value && value.trim() && value.length > 1) {
-        return true;
-      } else {
-        return "სახელის ველი უნდა შედგებოდეს მინიმუმ 2 სიმბოლოსაგან";
-      }
-    },
-    lastNameRules(value) {
-      if (value && value.trim() && value.length > 1) {
-        return true;
-      } else {
-        return "გვარის ველი უნდა შედგებოდეს მინიმუმ 2 სიმბოლოსაგან";
-      }
-    },
-    emailRules(value) {
-      const emailRegex = /.@redberry.ge$/;
-      if (emailRegex.test(value)) {
-        return true;
-      } else {
-        return "მეილი უნდა იყოს რედბერის ფორმატში";
-      }
-    },
+  data() {
+    return {
+      nameValue: '',
+      lastNameValue: '',
+      emailValue: ''
+    }
   },
+  methods: {
+    submit() {
+      this.$store.state.information.first_name = this.nameValue;
+      this.$store.state.information.last_name = this.lastNameValue;
+      this.$store.state.information.email = this.emailValue;
+    },
+    setNameValue(value) {
+      this.nameValue = value;
+    },
+    setLastNameValue (value) {
+      this.lastNameValue = value;
+    }, 
+    setEmailValue(value) {
+      this.emailValue = value;
+    }, 
+  },
+  beforeMount() {
+    this.nameValue = this.$store.getters.name;
+    this.lastNameValue = this.$store.getters.lastName;
+    this.emailValue = this.$store.getters.email;
+  }
 };
 </script>
 

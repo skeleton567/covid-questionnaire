@@ -6,6 +6,8 @@
     :name="name"
     :rules="componenetRule"
     :type="type"
+    v-model="value"
+    @input="sendValue(value)"
   />
   <ErrorMessage class="text-red-400 text-sm px-5" :name="name" />
 </template>
@@ -13,11 +15,23 @@
 <script>
 import { Field, Form, ErrorMessage } from "vee-validate";
 export default {
-  props: ["componenetRule", "type", "label", "name"],
+  props: {
+    componenetRule: { type: String, required: true },
+    type: { type: String, required: true },
+    label: { type: String, required: true },
+    name: { type: String, required: true },
+    value: { type: String, required: false },
+  },
+  emits: ["get-value"],
   components: {
     Field,
     ErrorMessage,
     Form,
+  },
+  methods: {
+    sendValue(value) {
+      this.$emit("get-value", value);
+    },
   },
 };
 </script>
