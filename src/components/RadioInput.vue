@@ -7,6 +7,7 @@
       :value="value"
       @change="sendValue(value)"
       v-model="componentValue"
+      :rules="rules"
     />
     {{ label }}
   </label>
@@ -20,6 +21,7 @@ export default {
     label: { type: String, required: true },
     name: { type: String, required: true },
     value: { type: String, required: true },
+    rules: { type: String, required: false },
   },
   emits: ["radio-value"],
   components: {

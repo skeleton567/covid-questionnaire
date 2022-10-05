@@ -1,5 +1,5 @@
 <template>
-  <div  class="h-[100vh] flex flex-col justify-center items-center">
+  <div class="h-[100vh] flex flex-col justify-center items-center">
     <transition name="bird" @after-enter="afterImgEnter" appear>
       <img
         class="w-24 h-24"
