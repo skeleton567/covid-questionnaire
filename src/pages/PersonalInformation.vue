@@ -8,8 +8,7 @@
             type="text"
             label="სახელი*"
             name="name"
-            @getValue="setNameValue"
-            :value="nameValue"
+            v-model="nameValue"
           />
         </div>
         <div class="mb-5">
@@ -18,8 +17,7 @@
             type="text"
             label="გვარი*"
             name="lastname"
-            @getValue="setLastNameValue"
-            :value="lastNameValue"
+            v-model="lastNameValue"
           />
         </div>
         <div>
@@ -28,8 +26,7 @@
             type="email"
             label="მეილი*"
             name="email"
-            @getValue="setEmailValue"
-            :value="emailValue"
+            v-model="emailValue"
           />
         </div>
         :
@@ -83,20 +80,11 @@ export default {
       this.$store.state.information.last_name = this.lastNameValue;
       this.$store.state.information.email = this.emailValue;
     },
-    setNameValue(value) {
-      this.nameValue = value;
-    },
-    setLastNameValue(value) {
-      this.lastNameValue = value;
-    },
-    setEmailValue(value) {
-      this.emailValue = value;
-    },
   },
   beforeMount() {
-    this.nameValue = this.$store.getters.name;
-    this.lastNameValue = this.$store.getters.lastName;
-    this.emailValue = this.$store.getters.email;
+    this.nameValue = this.$store.state.information.first_name;
+    this.lastNameValue = this.$store.state.information.last_name;
+    this.emailValue = this.$store.state.information.email;
   },
 };
 </script>

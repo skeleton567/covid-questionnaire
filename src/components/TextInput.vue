@@ -6,8 +6,8 @@
     :name="name"
     :rules="componenetRule"
     :type="type"
-    v-model="value"
-    @input="sendValue(value)"
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
     :placeholder="placeholder"
   />
   <ErrorMessage class="text-red-400 text-sm px-5" :name="name" />
@@ -21,19 +21,15 @@ export default {
     type: { type: String, required: true },
     label: { type: String, required: true },
     name: { type: String, required: true },
-    value: { type: String, required: false },
+    modelValue: { type: String, required: false },
     placeholder: { type: String, required: false },
+
   },
-  emits: ["get-value"],
+  emits: ['update:modelValue'],
   components: {
     Field,
     ErrorMessage,
     Form,
-  },
-  methods: {
-    sendValue(value) {
-      this.$emit("get-value", value);
-    },
   },
 };
 </script>

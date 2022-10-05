@@ -13,134 +13,97 @@
           ყოველდღიური კომუნიკაციაც გაიშვიათდა.
         </p>
 
-        <h2 class="font-bold text-xl mt-10">
+        <h2 class="font-bold text-xl mt-10 mb-2">
           რა სიხშირით შეიძლება გვქონდეს საერთო არაფორმალური ონლაინ შეხვედრები,
           სადაც ყველა სურვილისამებრ ჩაერთვება?*
         </h2>
-        <div class="mt-4 mb-5 ml-5">
-          <radio-input
-            value="twice_a_week"
-            label="კვირაში ორჯერ"
-            name="onlineMeeting"
-            :componentValue="nonFormalMeetings"
-            @radioValue="setNonFormalMeetings"
-          />
-        </div>
-        <div class="ml-5 mb-5">
-          <radio-input
-            value="once_a_week"
-            label="კვირაში ერთხელ"
-            name="onlineMeeting"
-            :componentValue="nonFormalMeetings"
-            @radioValue="setNonFormalMeetings"
-          />
-        </div>
-        <div class="ml-5 mb-5">
-          <radio-input
-            value="once_in_a_two_weeks"
-            label="ორ კვირაში ერთხელ"
-            name="onlineMeeting"
-            :componentValue="nonFormalMeetings"
-            @radioValue="setNonFormalMeetings"
-          />
-        </div>
-        <div class="ml-5">
-          <radio-input
-            value="once_in_a_month"
-            label="თვეში ერთხელ"
-            name="onlineMeeting"
-            :componentValue="nonFormalMeetings"
-            @radioValue="setNonFormalMeetings"
-          />
-        </div>
+        <radio-input
+          value="twice_a_week"
+          label="კვირაში ორჯერ"
+          name="onlineMeeting"
+          v-model="nonFormalMeetings"
+        />
+        <radio-input
+          value="once_a_week"
+          label="კვირაში ერთხელ"
+          name="onlineMeeting"
+          v-model="nonFormalMeetings"
+        />
+        <radio-input
+          value="once_in_a_two_weeks"
+          label="ორ კვირაში ერთხელ"
+          name="onlineMeeting"
+          v-model="nonFormalMeetings"
+        />
+        <radio-input
+          value="once_in_a_month"
+          label="თვეში ერთხელ"
+          name="onlineMeeting"
+          v-model="nonFormalMeetings"
+        />
 
-        <h2 class="font-bold text-xl mt-10">
+        <h2 class="font-bold text-xl mt-10 mb-2">
           კვირაში რამდენი დღე ისურვებდი ოფისიდან მუშაობას?*
         </h2>
-        <div class="mt-4 mb-5 ml-5">
-          <radio-input
-            value="0"
-            label="0"
-            name="workFromOffice"
-            :componentValue="numberOfDaysFromOffice"
-            @radioValue="setNumberOfDaysFromOffice"
-          />
-        </div>
-        <div class="mt-4 mb-5 ml-5">
-          <radio-input
-            value="1"
-            label="1"
-            name="workFromOffice"
-            :componentValue="numberOfDaysFromOffice"
-            @radioValue="setNumberOfDaysFromOffice"
-          />
-        </div>
-        <div class="ml-5 mb-5">
-          <radio-input
-            value="2"
-            label="2"
-            name="workFromOffice"
-            :componentValue="numberOfDaysFromOffice"
-            @radioValue="setNumberOfDaysFromOffice"
-          />
-        </div>
-        <div class="ml-5 mb-5">
-          <radio-input
-            value="3"
-            label="3"
-            name="workFromOffice"
-            :componentValue="numberOfDaysFromOffice"
-            @radioValue="setNumberOfDaysFromOffice"
-          />
-        </div>
-        <div class="ml-5 mb-5">
-          <radio-input
-            value="4"
-            label="4"
-            name="workFromOffice"
-            :componentValue="numberOfDaysFromOffice"
-            @radioValue="setNumberOfDaysFromOffice"
-          />
-        </div>
-        <div class="ml-5">
-          <radio-input
-            value="5"
-            label="5"
-            name="workFromOffice"
-            :componentValue="numberOfDaysFromOffice"
-            @radioValue="setNumberOfDaysFromOffice"
-          />
-        </div>
-        <div class="mt-10">
-          <text-area
-            label="რას ფიქრობ ფიზიკურ შეკრებებზე?"
-            name="physicalMeet"
-            :value="whatAboutMeetingsInLive"
-            @getValue="setWhatAboutMeetingsInLive"
-          />
-        </div>
-
-        <div class="mt-5">
-          <text-area
-            label="რას ფიქრობ არსებულ გარემოზე: რა მოგწონს, რას დაამატებდი, რას
+        <radio-input
+          value="0"
+          label="0"
+          name="workFromOffice"
+          v-model="numberOfDaysFromOffice"
+        />
+        <radio-input
+          value="1"
+          label="1"
+          name="workFromOffice"
+          v-model="numberOfDaysFromOffice"
+        />
+        <radio-input
+          value="2"
+          label="2"
+          name="workFromOffice"
+          v-model="numberOfDaysFromOffice"
+        />
+        <radio-input
+          value="3"
+          label="3"
+          name="workFromOffice"
+          v-model="numberOfDaysFromOffice"
+        />
+        <radio-input
+          value="4"
+          label="4"
+          name="workFromOffice"
+          v-model="numberOfDaysFromOffice"
+        />
+        <radio-input
+          value="5"
+          label="5"
+          name="workFromOffice"
+          v-model="numberOfDaysFromOffice"
+        />
+        <text-area
+          label="რას ფიქრობ ფიზიკურ შეკრებებზე?"
+          name="physicalMeet"
+          v-model="whatAboutMeetingsInLive"
+        />
+        <text-area
+          label="რას ფიქრობ არსებულ გარემოზე: რა მოგწონს, რას დაამატებდი, რას
             შეცვლიდი??"
-            name="situation"
-            :value="tellUsYourOpinionAbout"
-            @getValue="setTellUsYourOpinionAbout"
-          />
-          <div class="w-full flex justify-end">
-            <button
-              type="button"
-              @click="sendData"
-              :class="{
-                ['opacity-50']: !meta.valid,
-                ['pointer-events-none']: !meta.valid,
-              }"
-              class="bg-[#208298] text-white py-4 px-6 rounded-full text-lg font-bold"
-            >
-              დასრულება
-            </button>
-          </div>
+          name="situation"
+          v-model="tellUsYourOpinionAbout"
+        />
+        <div class="w-full flex justify-end">
+          <button
+            type="button"
+            @click="sendData"
+            :class="{
+              ['opacity-50']: !meta.valid,
+              ['pointer-events-none']: !meta.valid,
+            }"
+            class="bg-[#208298] text-white py-4 px-6 rounded-full text-lg font-bold mt-5"
+          >
+            დასრულება
+          </button>
         </div>
       </section>
       <img
@@ -193,18 +156,6 @@ export default {
       this.submit();
       this.$router.push({ name: "thankYou" });
     },
-    setNonFormalMeetings(value) {
-      this.nonFormalMeetings = value;
-    },
-    setNumberOfDaysFromOffice(value) {
-      this.numberOfDaysFromOffice = value;
-    },
-    setWhatAboutMeetingsInLive(value) {
-      this.whatAboutMeetingsInLive = value;
-    },
-    setTellUsYourOpinionAbout(value) {
-      this.tellUsYourOpinionAbout = value;
-    },
     submit() {
       this.$store.state.information.non_formal_meetings =
         this.nonFormalMeetings;
@@ -217,10 +168,13 @@ export default {
     },
   },
   beforeMount() {
-    this.nonFormalMeetings = this.$store.getters.nonFormalMeetings;
-    this.numberOfDaysFromOffice = this.$store.getters.numberOfDaysFromOffice;
-    this.whatAboutMeetingsInLive = this.$store.getters.whatAboutMeetingsInLive;
-    this.tellUsYourOpinionAbout = this.$store.getters.tellUsYourOpinionAbout;
+    this.nonFormalMeetings = this.$store.state.information.non_formal_meetings;
+    this.numberOfDaysFromOffice =
+      this.$store.state.information.number_of_days_from_office;
+    this.whatAboutMeetingsInLive =
+      this.$store.state.information.what_about_meetings_in_live;
+    this.tellUsYourOpinionAbout =
+      this.$store.state.information.tell_us_your_opinion_about;
   },
 };
 </script>

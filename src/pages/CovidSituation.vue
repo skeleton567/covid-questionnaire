@@ -2,63 +2,46 @@
   <Form class="h-[100vh]" v-slot="{ meta, values }">
     <the-header :pageNum="2">
       <section class="mt-48 w-[500px]">
-        <div>
-          <h2 class="font-bold text-xl">გაქვს გადატანილი Covid-19?*</h2>
-          <div class="mt-2 mb-5 ml-5">
-            <radio-input
-              value="yes"
-              label="კი"
-              name="covidStatus"
-              :componentValue="hadCovid"
-              @radioValue="setHadCovidValue"
-              :rules="'required'"
-            />
-          </div>
-          <div class="ml-5 mb-5">
-            <radio-input
-              value="no"
-              label="არა"
-              name="covidStatus"
-              :componentValue="hadCovid"
-              @radioValue="setHadCovidValue"
-              :rules="'required'"
-            />
-          </div>
-          <div class="ml-5">
-            <radio-input
-              value="have_right_now"
-              label="ახლა მაქვს"
-              name="covidStatus"
-              :componentValue="hadCovid"
-              @radioValue="setHadCovidValue"
-              :rules="'required'"
-            />
-          </div>
-        </div>
+        <h2 class="font-bold text-xl mb-2">გაქვს გადატანილი Covid-19?*</h2>
+        <radio-input
+          value="yes"
+          label="კი"
+          name="covidStatus"
+          v-model="hadCovid"
+          :rules="'required'"
+        />
+        <radio-input
+          value="no"
+          label="არა"
+          name="covidStatus"
+          v-model="hadCovid"
+          :rules="'required'"
+        />
+        <radio-input
+          value="have_right_now"
+          label="ახლა მაქვს"
+          name="covidStatus"
+          v-model="hadCovid"
+          :rules="'required'"
+        />
         <div v-if="values.covidStatus === 'yes'" class="mt-10">
-          <h2 class="font-bold text-xl">
+          <h2 class="font-bold text-xl mb-2">
             ანტისხეულების ტესტი გაქვს გაკეთებული?*
           </h2>
-          <div class="ml-5 mb-5 mt-2">
-            <radio-input
-              value="true"
-              :componentValue="hadAntibodyTest"
-              @radioValue="sethadAntibodyTestValue"
-              label="კი"
-              name="covidTest"
-              :rules="'required'"
-            />
-          </div>
-          <div class="mt-2 mb-5 ml-5">
-            <radio-input
-              value="false"
-              :componentValue="hadAntibodyTest"
-              @radioValue="sethadAntibodyTestValue"
-              label="არა"
-              name="covidTest"
-              :rules="'required'"
-            />
-          </div>
+          <radio-input
+            value="true"
+            v-model="hadAntibodyTest"
+            label="კი"
+            name="covidTest"
+            :rules="'required'"
+          />
+          <radio-input
+            value="false"
+            v-model="hadAntibodyTest"
+            label="არა"
+            name="covidTest"
+            :rules="'required'"
+          />
         </div>
 
         <div v-if="values.covidStatus === 'yes' && values.covidTest === 'true'">
@@ -89,8 +72,7 @@
             type="text"
             label="მიუთითე მიახლოებითი პერიოდი (დღე/თვე/წელი) როდის გქონდა Covid-19*"
             name="period"
-            @getValue="setcovidSicknessDate"
-            :value="covidSicknessDate"
+            v-model="covidSicknessDate"
             placeholder="დდ/თთ//წწ"
           />
         </div>
@@ -155,23 +137,13 @@ export default {
           this.covidSicknessDate;
       }
     },
-    setHadCovidValue(value) {
-      this.hadCovid = value;
-    },
-    sethadAntibodyTestValue(value) {
-      this.hadAntibodyTest = value;
-      
-    },
-    setcovidSicknessDate(value) {
-      this.covidSicknessDate = value;
-    },
   },
   beforeMount() {
-    this.hadCovid = this.$store.getters.hadCovid;
-    this.hadAntibodyTest = this.$store.getters.hadAntibodyTest;
-    this.covidSicknessDate = this.$store.getters.covidSicknessDate;
-    this.testDate = this.$store.getters.testDate;
-    this.number = this.$store.getters.number;
+    this.hadCovid = this.$store.state.information.had_covid;
+    this.hadAntibodyTest = this.$store.state.information.had_antibody_test;
+    this.covidSicknessDate = this.$store.state.information.covid_sickness_date;
+    this.testDate = this.$store.state.information.antibodies.test_date;
+    this.number = this.$store.state.information.antibodies.number;
   },
 };
 </script>

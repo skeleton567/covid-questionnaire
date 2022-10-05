@@ -2,59 +2,44 @@
   <Form class="h-[100vh]" v-slot="{ values, meta }">
     <the-header :pageNum="3">
       <section class="mt-48 w-[700px]">
-        <h2 class="font-bold text-xl">უკვე აცრილი ხარ?*</h2>
-        <div class="ml-5">
-          <div class="mt-2 mb-5">
-            <radio-input
-              value="true"
-              label="კი"
-              name="vaccinated"
-              :rules="'required'"
-              :componentValue="hadVaccine"
-              @radioValue="setHadVaccine"
-            />
-          </div>
-          <radio-input
-            value="false"
-            label="არა"
-            name="vaccinated"
-            :rules="'required'"
-            :componentValue="hadVaccine"
-            @radioValue="setHadVaccine"
-          />
-        </div>
+        <h2 class="font-bold text-xl mb-2">უკვე აცრილი ხარ?*</h2>
+        <radio-input
+          value="true"
+          label="კი"
+          name="vaccinated"
+          :rules="'required'"
+          v-model="hadVaccine"
+        />
+        <radio-input
+          value="false"
+          label="არა"
+          name="vaccinated"
+          :rules="'required'"
+          v-model="hadVaccine"
+        />
         <div v-if="values.vaccinated === 'true'" class="mt-10">
-          <h2 class="font-bold text-xl">აირჩიე რა ეტაპზე ხარ*</h2>
-          <div class="ml-5 mt-2">
-            <radio-input
-              value="first_dosage_and_registered_on_the_second"
-              label="პირველი დოზა და დარეგისტრირებული ვარ მეორეზე"
-              name="stage"
-              :rules="'required'"
-              :componentValue="vaccinationStage"
-              @radioValue="setVaccinationStage"
-            />
-          </div>
-          <div class="my-5 ml-5">
-            <radio-input
-              value="fully_vaccinated"
-              label="სრულად აცრილი ვარ"
-              name="stage"
-              :rules="'required'"
-              :componentValue="vaccinationStage"
-              @radioValue="setVaccinationStage"
-            />
-          </div>
-          <div class="ml-5">
-            <radio-input
-              value="first_dosage_and_not_registered_yet"
-              label="პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე"
-              name="stage"
-              :rules="'required'"
-              :componentValue="vaccinationStage"
-              @radioValue="setVaccinationStage"
-            />
-          </div>
+          <h2 class="font-bold text-xl mb-2">აირჩიე რა ეტაპზე ხარ*</h2>
+          <radio-input
+            value="first_dosage_and_registered_on_the_second"
+            label="პირველი დოზა და დარეგისტრირებული ვარ მეორეზე"
+            name="stage"
+            :rules="'required'"
+            v-model="vaccinationStage"
+          />
+          <radio-input
+            value="fully_vaccinated"
+            label="სრულად აცრილი ვარ"
+            name="stage"
+            :rules="'required'"
+            v-model="vaccinationStage"
+          />
+          <radio-input
+            value="first_dosage_and_not_registered_yet"
+            label="პირველი დოზა და არ დავრეგისტრირებულვარ მეორეზე"
+            name="stage"
+            :rules="'required'"
+            v-model="vaccinationStage"
+          />
           <div
             v-if="values.stage === 'first_dosage_and_not_registered_yet'"
             class="w-80 mt-10"
@@ -73,36 +58,26 @@
         </div>
 
         <div v-if="values.vaccinated === 'false'" class="mt-10">
-          <h2 class="font-bold text-xl">რას ელოდები?*</h2>
-          <div class="ml-5 mt-2">
-            <radio-input
-              value="registered_and_waiting"
-              label="დარეგისტრირებული ვარ და ველოდები რიცხვს"
-              name="wait"
-              :rules="'required'"
-              :componentValue="iAmWaiting"
-              @radioValue="setIAmWaiting"
-            />
-          </div>
-          <div class="my-5 ml-5">
-            <radio-input
-              value="not_planning"
-              label="არ ვგეგმავ"
-              name="wait"
-              :componentValue="iAmWaiting"
-              @radioValue="setIAmWaiting"
-            />
-          </div>
-          <div class="ml-5">
-            <radio-input
-              value="had_covid_and_planning_to_be_vaccinated"
-              label="გადატანილი მაქვს და ვგეგმავ აცრას"
-              name="wait"
-              :rules="'required'"
-              :componentValue="iAmWaiting"
-              @radioValue="setIAmWaiting"
-            />
-          </div>
+          <h2 class="font-bold text-xl mb-2">რას ელოდები?*</h2>
+          <radio-input
+            value="registered_and_waiting"
+            label="დარეგისტრირებული ვარ და ველოდები რიცხვს"
+            name="wait"
+            :rules="'required'"
+            v-model="iAmWaiting"
+          />
+          <radio-input
+            value="not_planning"
+            label="არ ვგეგმავ"
+            name="wait"
+            v-model="iAmWaiting"
+          />
+          <radio-input
+            value="had_covid_and_planning_to_be_vaccinated"
+            label="გადატანილი მაქვს და ვგეგმავ აცრას"
+            name="wait"
+            v-model="iAmWaiting"
+          />
           <div
             v-if="values.wait === 'had_covid_and_planning_to_be_vaccinated'"
             class="mt-10"
@@ -164,15 +139,6 @@ export default {
     };
   },
   methods: {
-    setHadVaccine(value) {
-      this.hadVaccine = value;
-    },
-    setVaccinationStage(value) {
-      this.vaccinationStage = value;
-    },
-    setIAmWaiting(value) {
-      this.iAmWaiting = value;
-    },
     submit() {
       this.$store.state.information.had_vaccine = this.hadVaccine;
       if (this.hadVaccine === "true") {
@@ -183,9 +149,9 @@ export default {
     },
   },
   beforeMount() {
-    this.hadVaccine = this.$store.getters.hadVaccine;
-    this.vaccinationStage = this.$store.getters.vaccinationStage;
-    this.iAmWaiting = this.$store.getters.iAmWaiting;
+    this.hadVaccine = this.$store.state.information.had_vaccine;
+    this.vaccinationStage = this.$store.state.information.vaccination_stage;
+    this.iAmWaiting = this.$store.state.information.i_am_waiting;
   },
   beforeRouteEnter(to, from, next) {
     next((vm) => {
@@ -196,7 +162,7 @@ export default {
     this.lastPath = this.$router.options.history.state.back;
   },
   computed: {
-    prevRoute() {
+    prevRoutePatch() {
       return this.lastPath ? this.lastPath : "/";
     },
     animation() {
