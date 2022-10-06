@@ -116,10 +116,10 @@ export default {
   data() {
     return {
       hadCovid: "",
-      hadAntibodyTest: null,
+      hadAntibodyTest: "",
       covidSicknessDate: "",
       testDate: "",
-      number: null,
+      number: "",
     };
   },
   methods: {
@@ -128,10 +128,19 @@ export default {
         return (this.$store.state.information.had_covid = this.hadCovid);
       }
       this.$store.state.information.had_covid = this.hadCovid;
-      this.$store.state.information.had_antibody_test = this.hadAntibodyTest;
+      if (this.hadAntibodyTest) {
+        this.$store.state.information.had_antibody_test = JSON.parse(
+          this.hadAntibodyTest
+        );
+      }
       if (this.hadAntibodyTest === "true") {
+        this.$store.state.information.antibodies = {};
         this.$store.state.information.antibodies.test_date = this.testDate;
-        this.$store.state.information.antibodies.number = this.number;
+        if (this.number) {
+          this.$store.state.information.antibodies.number = JSON.parse(
+            this.number
+          );
+        }
       } else {
         this.$store.state.information.covid_sickness_date =
           this.covidSicknessDate;
@@ -140,10 +149,14 @@ export default {
   },
   beforeMount() {
     this.hadCovid = this.$store.state.information.had_covid;
-    this.hadAntibodyTest = this.$store.state.information.had_antibody_test;
+    this.hadAntibodyTest = JSON.stringify(
+      this.$store.state.information?.had_antibody_test
+    );
     this.covidSicknessDate = this.$store.state.information.covid_sickness_date;
-    this.testDate = this.$store.state.information.antibodies.test_date;
-    this.number = this.$store.state.information.antibodies.number;
+    this.testDate = this.$store.state.information.antibodies?.test_date;
+    this.number = JSON.stringify(
+      this.$store.state.information.antibodies?.number
+    );
   },
 };
 </script>

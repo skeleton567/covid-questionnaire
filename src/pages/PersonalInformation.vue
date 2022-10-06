@@ -4,7 +4,7 @@
       <section class="mt-48 w-[500px]">
         <div class="mb-5">
           <text-input
-            componenetRule="required|min_length:2"
+            componenetRule="required|min_length:3"
             type="text"
             label="სახელი*"
             name="name"
@@ -13,7 +13,7 @@
         </div>
         <div class="mb-5">
           <text-input
-            componenetRule="required|min_length:2"
+            componenetRule="required|min_length:3"
             type="text"
             label="გვარი*"
             name="lastname"
@@ -29,7 +29,6 @@
             v-model="emailValue"
           />
         </div>
-        :
         <div class="mt-28 w-64">
           <div class="w-60 border-t-2 border-gray-500 mb-5"></div>
           <p class="text-gray-500">
