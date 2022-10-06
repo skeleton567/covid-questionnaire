@@ -124,39 +124,20 @@ export default {
   },
   methods: {
     submit() {
-      if (this.hadCovid === "no" || this.hadCovid === "have_right_now") {
-        return (this.$store.state.information.had_covid = this.hadCovid);
-      }
       this.$store.state.information.had_covid = this.hadCovid;
-      if (this.hadAntibodyTest) {
-        this.$store.state.information.had_antibody_test = JSON.parse(
-          this.hadAntibodyTest
-        );
-      }
-      if (this.hadAntibodyTest === "true") {
-        this.$store.state.information.antibodies = {};
-        this.$store.state.information.antibodies.test_date = this.testDate;
-        if (this.number) {
-          this.$store.state.information.antibodies.number = JSON.parse(
-            this.number
-          );
-        }
-      } else {
-        this.$store.state.information.covid_sickness_date =
-          this.covidSicknessDate;
-      }
+      this.$store.state.information.had_antibody_test = this.hadAntibodyTest;
+      this.$store.state.information.antibodies.test_date = this.testDate;
+      this.$store.state.information.antibodies.number = this.number;
+      this.$store.state.information.covid_sickness_date =
+        this.covidSicknessDate;
     },
   },
   beforeMount() {
     this.hadCovid = this.$store.state.information.had_covid;
-    this.hadAntibodyTest = JSON.stringify(
-      this.$store.state.information?.had_antibody_test
-    );
+    this.hadAntibodyTest = this.$store.state.information?.had_antibody_test;
     this.covidSicknessDate = this.$store.state.information.covid_sickness_date;
     this.testDate = this.$store.state.information.antibodies?.test_date;
-    this.number = JSON.stringify(
-      this.$store.state.information.antibodies?.number
-    );
+    this.number = this.$store.state.information.antibodies?.number;
   },
 };
 </script>

@@ -158,7 +158,7 @@ export default {
     async sendData() {
       this.submit();
       this.leave = false;
-      const data = this.$store.state.information;
+      const data = this.$store.getters.finalInformation;
       try {
         const response = await axios.post(
           "https://covid19.devtest.ge/api/create",
@@ -174,11 +174,8 @@ export default {
     submit() {
       this.$store.state.information.non_formal_meetings =
         this.nonFormalMeetings;
-      if (this.numberOfDaysFromOffice) {
-        this.$store.state.information.number_of_days_from_office = JSON.parse(
-          this.numberOfDaysFromOffice
-        );
-      }
+      this.$store.state.information.number_of_days_from_office =
+        this.numberOfDaysFromOffice;
       this.$store.state.information.what_about_meetings_in_live =
         this.whatAboutMeetingsInLive;
       this.$store.state.information.tell_us_your_opinion_about_us =
@@ -187,9 +184,8 @@ export default {
   },
   beforeMount() {
     this.nonFormalMeetings = this.$store.state.information.non_formal_meetings;
-    this.numberOfDaysFromOffice = JSON.stringify(
-      this.$store.state.information?.number_of_days_from_office
-    );
+    this.numberOfDaysFromOffice =
+      this.$store.state.information?.number_of_days_from_office;
     this.whatAboutMeetingsInLive =
       this.$store.state.information.what_about_meetings_in_live;
     this.tellUsYourOpinionAbout =

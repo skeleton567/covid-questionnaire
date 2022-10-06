@@ -7,7 +7,9 @@ import getters from "./getters.js";
 const store = createStore({
   state() {
     return {
-      information: {},
+      information: {
+        antibodies: {},
+      },
     };
   },
   mutations,
