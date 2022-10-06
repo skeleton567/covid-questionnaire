@@ -4,7 +4,7 @@
       <section class="mt-48 w-[500px]">
         <div class="mb-5">
           <text-input
-            componenetRule="required|min_length:2"
+            componenetRule="required|min_length:3"
             type="text"
             label="სახელი*"
             name="name"
@@ -13,7 +13,7 @@
         </div>
         <div class="mb-5">
           <text-input
-            componenetRule="required|min_length:2"
+            componenetRule="required|min_length:3"
             type="text"
             label="გვარი*"
             name="lastname"

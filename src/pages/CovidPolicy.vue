@@ -113,6 +113,7 @@
       />
       <transition name="heart" appear>
         <img
+          v-if="leave"
           class="h-[170px] w-[190px] mt-60 ml-[800px] fixed"
           src="@/assets/images/heart.png"
           alt="Red heart"
@@ -149,18 +150,41 @@ export default {
         onlineMeeting: "required",
         workFromOffice: "required",
       },
+      leave: true,
     };
   },
   methods: {
-    sendData() {
+    async sendData() {
       this.submit();
-      this.$router.push({ name: "thankYou" });
+      this.leave = false;
+      const data = this.$store.state.information;
+      console.log(JSON.stringify(data));
+      try {
+        const response = await fetch(`https://covid19.devtest.ge/api/create`, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/JSON",
+            accept: "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        const responseData = await response.json();
+
+        if (!response.ok) {
+          console.log(responseData);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      this.$router.replace({ name: "thankYou" });
+     
     },
     submit() {
       this.$store.state.information.non_formal_meetings =
         this.nonFormalMeetings;
-      this.$store.state.information.number_of_days_from_office =
-        this.numberOfDaysFromOffice;
+      this.$store.state.information.number_of_days_from_office = JSON.parse(
+        this.numberOfDaysFromOffice
+      );
       this.$store.state.information.what_about_meetings_in_live =
         this.whatAboutMeetingsInLive;
       this.$store.state.information.tell_us_your_opinion_about =
@@ -169,8 +193,9 @@ export default {
   },
   beforeMount() {
     this.nonFormalMeetings = this.$store.state.information.non_formal_meetings;
-    this.numberOfDaysFromOffice =
-      this.$store.state.information.number_of_days_from_office;
+    this.numberOfDaysFromOffice = JSON.stringify(
+      this.$store.state.information.number_of_days_from_office
+    );
     this.whatAboutMeetingsInLive =
       this.$store.state.information.what_about_meetings_in_live;
     this.tellUsYourOpinionAbout =
@@ -192,12 +217,14 @@ export default {
 .heart-leave-from {
   scale: 1;
   filter: brightness(0);
+  z-index: 100;
 }
 .heart-leave-active {
-  transition: all 1s ease-out;
+  transition: all 0.5s ease-in;
 }
 .heart-leave-to {
   scale: 20;
   filter: brightness(0);
+  z-index: 100;
 }
 </style>
