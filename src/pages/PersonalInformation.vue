@@ -29,7 +29,6 @@
             v-model="emailValue"
           />
         </div>
-        :
         <div class="mt-28 w-64">
           <div class="w-60 border-t-2 border-gray-500 mb-5"></div>
           <p class="text-gray-500">

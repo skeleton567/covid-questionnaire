@@ -160,7 +160,7 @@ export default {
       const data = this.$store.state.information;
       console.log(JSON.stringify(data));
       try {
-        const response = await fetch(`https://covid19.devtest.ge/api/create`, {
+        const response = await fetch('https://covid19.devtest.ge/api/create', {
           method: "POST",
           headers: {
             "Content-type": "application/JSON",
@@ -187,19 +187,19 @@ export default {
       );
       this.$store.state.information.what_about_meetings_in_live =
         this.whatAboutMeetingsInLive;
-      this.$store.state.information.tell_us_your_opinion_about =
+      this.$store.state.information.tell_us_your_opinion_about_us =
         this.tellUsYourOpinionAbout;
     },
   },
   beforeMount() {
     this.nonFormalMeetings = this.$store.state.information.non_formal_meetings;
     this.numberOfDaysFromOffice = JSON.stringify(
-      this.$store.state.information.number_of_days_from_office
+      this.$store.state.information?.number_of_days_from_office
     );
     this.whatAboutMeetingsInLive =
       this.$store.state.information.what_about_meetings_in_live;
     this.tellUsYourOpinionAbout =
-      this.$store.state.information.tell_us_your_opinion_about;
+      this.$store.state.information.tell_us_your_opinion_about_us;
   },
 };
 </script>

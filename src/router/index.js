@@ -5,6 +5,7 @@ import CovidSituation from "@/pages/CovidSituation.vue";
 import Vaccinated from "@/pages/Vaccinated.vue";
 import CovidPolicy from "@/pages/CovidPolicy.vue";
 import ThankYou from "@/pages/ThankYou.vue";
+import NotFound from "@/pages/NotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,11 @@ const router = createRouter({
       path: "/thank-you",
       name: "thankYou",
       component: ThankYou,
+    },
+    {
+      path: "/:notFound(.*)",
+      name: "notFound",
+      component: NotFound,
     },
   ],
 });

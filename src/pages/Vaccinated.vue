@@ -149,7 +149,7 @@ export default {
     },
   },
   beforeMount() {
-    this.hadVaccine = JSON.stringify(this.$store.state.information.had_vaccine);
+    this.hadVaccine = JSON.stringify(this.$store.state.information?.had_vaccine);
     this.vaccinationStage = this.$store.state.information.vaccination_stage;
     this.iAmWaiting = this.$store.state.information.i_am_waiting;
   },

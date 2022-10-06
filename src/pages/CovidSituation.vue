@@ -116,10 +116,10 @@ export default {
   data() {
     return {
       hadCovid: "",
-      hadAntibodyTest: null,
+      hadAntibodyTest: '',
       covidSicknessDate: "",
       testDate: "",
-      number: null,
+      number: '',
     };
   },
   methods: {
@@ -141,7 +141,7 @@ export default {
   },
   beforeMount() {
     this.hadCovid = this.$store.state.information.had_covid;
-    this.hadAntibodyTest = JSON.stringify(this.$store.state.information.had_antibody_test);
+    this.hadAntibodyTest = JSON.stringify(this.$store.state.information?.had_antibody_test);
     this.covidSicknessDate = this.$store.state.information.covid_sickness_date;
     this.testDate = this.$store.state.information.antibodies?.test_date;
     this.number = JSON.stringify(this.$store.state.information.antibodies?.number);
