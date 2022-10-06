@@ -140,20 +140,13 @@ export default {
   },
   methods: {
     submit() {
-      if (this.hadVaccine) {
-        this.$store.state.information.had_vaccine = JSON.parse(this.hadVaccine);
-      }
-      if (this.hadVaccine === "true") {
-        this.$store.state.information.vaccination_stage = this.vaccinationStage;
-      } else {
-        this.$store.state.information.i_am_waiting = this.iAmWaiting;
-      }
+      this.$store.state.information.had_vaccine = this.hadVaccine;
+      this.$store.state.information.vaccination_stage = this.vaccinationStage;
+      this.$store.state.information.i_am_waiting = this.iAmWaiting;
     },
   },
   beforeMount() {
-    this.hadVaccine = JSON.stringify(
-      this.$store.state.information?.had_vaccine
-    );
+    this.hadVaccine = this.$store.state.information?.had_vaccine;
     this.vaccinationStage = this.$store.state.information.vaccination_stage;
     this.iAmWaiting = this.$store.state.information.i_am_waiting;
   },
