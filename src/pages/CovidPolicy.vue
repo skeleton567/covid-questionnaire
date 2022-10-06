@@ -134,6 +134,7 @@
 import { Form } from "vee-validate";
 import RadioInput from "@/components/RadioInput.vue";
 import TextArea from "@/components/TextArea.vue";
+import axios from "axios";
 export default {
   components: {
     Form,
@@ -158,33 +159,26 @@ export default {
       this.submit();
       this.leave = false;
       const data = this.$store.state.information;
-      console.log(JSON.stringify(data));
       try {
-        const response = await fetch('https://covid19.devtest.ge/api/create', {
-          method: "POST",
-          headers: {
-            "Content-type": "application/JSON",
-            accept: "application/json",
-          },
-          body: JSON.stringify(data),
-        });
-        const responseData = await response.json();
-
-        if (!response.ok) {
-          console.log(responseData);
+        const response = await axios.post(
+          "https://covid19.devtest.ge/api/create",
+          data
+        );
+        if (response.status === 201) {
+          this.$router.replace({ name: "thankYou" });
         }
       } catch (error) {
         console.error(error);
       }
-      this.$router.replace({ name: "thankYou" });
-     
     },
     submit() {
       this.$store.state.information.non_formal_meetings =
         this.nonFormalMeetings;
-      this.$store.state.information.number_of_days_from_office = JSON.parse(
-        this.numberOfDaysFromOffice
-      );
+      if (this.numberOfDaysFromOffice) {
+        this.$store.state.information.number_of_days_from_office = JSON.parse(
+          this.numberOfDaysFromOffice
+        );
+      }
       this.$store.state.information.what_about_meetings_in_live =
         this.whatAboutMeetingsInLive;
       this.$store.state.information.tell_us_your_opinion_about_us =
