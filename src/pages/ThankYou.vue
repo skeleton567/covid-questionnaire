@@ -56,7 +56,6 @@ export default {
 
 .bigStar-enter-from {
   translate: 40px 40px;
-  opacity: 0;
 }
 .bigStar-enter-active {
   transition: all 1s ease-in-out;
@@ -67,7 +66,6 @@ export default {
 
 .smallStar-enter-from {
   translate: -40px -40px;
-  opacity: 0;
 }
 .smallStar-enter-active {
   transition: all 0.7s ease-in-out;
