@@ -23,9 +23,8 @@ export default {
     name: { type: String, required: true },
     modelValue: { type: String, required: false },
     placeholder: { type: String, required: false },
-
   },
-  emits: ['update:modelValue'],
+  emits: ["update:modelValue"],
   components: {
     Field,
     ErrorMessage,
