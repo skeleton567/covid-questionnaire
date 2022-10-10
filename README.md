@@ -22,7 +22,6 @@ he Covid situation and how Redberry can improve and support the company's intern
 
 * [VueJs@3.x](https://vuejs.org/guide/introduction.html) - front-end framework
 * [Vee-validate@4.x](https://vee-validate.logaretm.com/v4/) - package for form validations
-* [Axios](https://axios-http.com/docs/intro) - package for sending HTTP requests
 * [Tailwind CSS](https://tailwindcss.com) - CSS library
 
 #
